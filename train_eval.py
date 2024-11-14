@@ -206,17 +206,17 @@ def training(seed, dataset, opt, pipe, quantize, saving_iterations, checkpoint_i
             # if psnr_test:
             #     cur_psnr = psnr_test
 
-            # if (iteration -1)% dataset.log_interval == 0 or iteration == opt.iterations:
-            #     cur_size = gaussians.size()/8/(10**6)
-            #     log_dict = {
-            #                 "Loss": f"{ema_loss_for_log:.{5}f}",
-            #                 "Num points": f"{gaussians._xyz.shape[0]}",
-            #                 "Size (MB)": f"{cur_size:.{2}f}",
-            #                 "Resize": f"{resize_scale_sched(iteration):.{2}f}",
-            #                 "PSNR": f"{cur_psnr:.{2}f}",
-            #                 }
-            #     progress_bar.set_postfix(log_dict)
-            #     progress_bar.update(dataset.log_interval)
+            if (iteration -1)% dataset.log_interval == 0 or iteration == opt.iterations:
+                cur_size = gaussians.size()/8/(10**6)
+                log_dict = {
+                            "Loss": f"{ema_loss_for_log:.{5}f}",
+                            "Num points": f"{gaussians._xyz.shape[0]}",
+                            "Size (MB)": f"{cur_size:.{2}f}",
+                            "Resize": f"{resize_scale_sched(iteration):.{2}f}",
+                            # "PSNR": f"{cur_psnr:.{2}f}",
+                            }
+                progress_bar.set_postfix(log_dict)
+                progress_bar.update(dataset.log_interval)
             if iteration == opt.iterations:
                 progress_bar.close()
 
