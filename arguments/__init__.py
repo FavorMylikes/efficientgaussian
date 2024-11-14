@@ -104,6 +104,7 @@ class ModelParams(ParamGroup):
         self.shuffle_seed = 0
         self.save_images = False
         self.save_ply = False
+        self.eval = False
 
         self.use_wandb = False
         self.wandb_project = "wandb-project"
