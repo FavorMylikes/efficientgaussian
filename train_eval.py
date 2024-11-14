@@ -296,6 +296,7 @@ def prepare_output_and_logger(args, all_args):
         else:
             unique_str = str(uuid.uuid4())
         args.model_path = os.path.join("./output/", unique_str[0:10])
+        all_args.model_path = args.model_path
         
     # Set up output folder
     print("Output folder: {}".format(args.model_path))
