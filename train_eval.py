@@ -588,7 +588,7 @@ if __name__ == "__main__":
     parser.add_argument('--seed', type=int, default=0)
     parser.add_argument('--debug_from', type=int, default=-1)
     parser.add_argument('--detect_anomaly', action='store_true', default=False)
-    parser.add_argument("--save_iterations", nargs="+", type=int, default=[])
+    parser.add_argument("--save_iterations", nargs="+", type=int, default=[7_000, 30_000])
     parser.add_argument("--quiet", action="store_true")
     parser.add_argument("--checkpoint_iterations", nargs="+", type=int, default=[])
     parser.add_argument("--start_checkpoint", type=str, default = None)
@@ -638,7 +638,7 @@ if __name__ == "__main__":
 
     if not args.skip_test:
         if os.path.exists(os.path.join(args.model_path,"results.json")) and not args.retest:
-            print("Testing complete at {}".format(args.model_path))
+            print("Testing complete at {}".format(args.model_path))iterations
         else:
             images, fps, loaded_iter = render_sets(lp_args, best_iter, pp_args, qp_args, 
                                     args.skip_train, args.skip_test, wandb_enabled, op_args.use_amp)
